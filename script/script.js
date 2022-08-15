@@ -1,7 +1,7 @@
 window.addEventListener("scroll", scroll);
 
 const scrollHeader = document.querySelector(".web-header");
-const headerMenu = document.getElementsByClassName("header-menu");
+const headerMenu = document.getElementsByClassName("header-main-menu");
 
 function scroll() {
   let top = window.scrollY;

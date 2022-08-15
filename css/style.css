@@ -61,7 +61,7 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-.header-menu.on {
+.header-main-menu.on {
     color: #000;
 }
 
@@ -82,7 +82,11 @@ body {
     width: 150px;
 }
 
-.web-header:hover .nav > li {
+.nav > li > span > a {
+    color: #fff;
+}
+
+.web-header:hover .nav > li > span > a {
     color: #000;
 }
 
@@ -172,6 +176,7 @@ select {
     font-size: 14px;
     padding: 10px 20px;
     border-radius: 25px;
+    cursor: pointer;
 }
 
 .in {
@@ -253,6 +258,7 @@ figure > img {
     font-family: 'Noto Sans KR';
     border-radius: 10px;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 .main-btn {
