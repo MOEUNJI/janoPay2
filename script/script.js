@@ -7,6 +7,20 @@ const hamBtn = document.querySelector(".ham-img");
 const mHeader = document.querySelector(".all-header");
 const close = document.querySelector(".close");
 const allContainer = document.querySelector(".all-container");
+const accordionOne = document.getElementsByClassName("accordion-main-menu");
+const accordionTwo = document.getElementsByClassName("accordion-sub-menu");
+
+for (let i = 0; i < accordionOne.length; i++){
+  accordionOne[i].addEventListener("click", () => {
+    if (accordionTwo[j].style.display == "none") {
+      accordionTwo[j].style.display = "block"
+    } else {
+       accordionTwo[j].style.display = "none";
+    }
+  })
+}
+
+
 
 hamBtn.addEventListener("click", () => {
   if (mClick.style.display == "none") {

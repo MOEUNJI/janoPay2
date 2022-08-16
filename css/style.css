@@ -93,6 +93,14 @@ body {
     width: 18px;
 }
 
+/* ----------------------------------------- */
+
+.accordion-sub-menu {
+    display: none;
+}
+
+/* ----------------------------------------- */
+
 .web-header {
     position: fixed;
     top: 0;

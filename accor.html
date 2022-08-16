@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .accordion {
+      width: 100%;
+      max-width: 360px;
+      margin: auto;
+      background: #fff;
+      border-radius: 4px;
+    }
+
+    .accordion .menu {
+      position: relative;
+      padding: 15px 15px 15px 45px;
+      color: #4d4d4d;
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+      transition: all 0.4s ease;
+    }
+
+    .accordion li:last-child .menu {
+      border-bottom: 0;
+    }
+
+    .accordion li i {
+      position: absolute;
+      top: 1.2rem;
+      left: 1rem;
+      color: #595959;
+      transition: all 0.4s ease;
+    }
+
+    .accordion li i.fa-chevron-down {
+      right: 1rem;
+      left: auto;
+    }
+
+    .accordion li.show i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    /* .accordion li.show .menu {
+      color: #b63b4d;
+    }
+
+    .accordion li.show i {
+      color: #b63b4d;
+    } */
+
+    /* Show submenu */
+    .accordion li.show .accordion-submenu {
+      /* height: auto;를 지정하면 transition이 동작하지 않는다 */
+      max-height: 500px;
+    }
+
+    .accordion-submenu {
+      /* height: auto;를 지정하면 transition이 동작하지 않는다 */
+      max-height: 0;
+      overflow: hidden;
+      background: #444359;
+      font-size: 14px;
+      transition: max-height 0.4s ease;
+    }
+
+    .accordion-submenu li {
+      border-bottom: 1px solid #4b4a5e;
+    }
+
+    .accordion li:last-child .accordion-submenu {
+      border-radius: 0 0 4px 4px;
+    }
+
+    .accordion li:last-child .accordion-submenu li:last-child {
+      border-bottom: 0;
+    }
+
+    .accordion-submenu li {
+      display: block;
+      text-decoration: none;
+      color: #d9d9d9;
+      padding: 12px;
+      padding-left: 42px;
+      transition: all 0.25s ease-in-out;
+    }
+
+    .accordion-submenusubmenu a:hover {
+      background: #b63b4d;
+      color: #fff;
+    }
+</style>
+<body>
+    <ul id="accordion" class="accordion">
+        <li>
+            <div class="menu">개인</div>
+            <ul class="accordion-submenu">
+                <li class="menu">쇼핑 및 구매방법
+                    <ul>
+                        <li>온라인 쇼핑</li>
+                        <li>오프라인 키오스크</li>
+                        <li>QR코드로 결제</li>
+                        <li>자노페이 신용카드</li>
+                        <li>거래 및 캐시백</li>
+                    </ul>
+                </li>
+                <li>보내기 및 받기
+                    <ul>
+                        <li></li>
+                    </ul>
+                </li>
+                <li>자산관리
+                    <ul>
+                        <li></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    <li>
+        <div class="menu">비즈니스</div>
+        <ul class="accordion-submenu">
+            <li>Tablets</li>
+            <li>Mobiles</li>
+            <li>Desktop</li>
+        </ul>
+    </li>
+    <li>
+        <div class="menu">개발</div>
+    </li>
+    <li>
+        <div class="menu">고객센터</div>
+        <ul class="accordion-submenu">
+            <li>Chrome</li>
+            <li>Firfox</li>
+            <li>Safari</li>
+        </ul>
+    </li>
+  </ul>
+  <script>
+     class Accordion {
+    constructor(options) {
+      // 기본 옵션과 사용자 지정 옵션을 병합
+      this.config = Accordion.mergeConfig(options);
+      this.accordion = document.querySelector(this.config.selector);
+      // 이벤트 핸들러 내부의 this는 currentTartget
+      this.accordion.addEventListener('click', this.toogle.bind(this));
+    }
+
+    static mergeConfig(options) {
+      // 기본 옵션
+      const config = {
+        selector: '#accordion',
+        multi: true
+      };
+
+      return { ...config, ...options };
+    }
+
+    toogle(event) {
+      if (!event.target.classList.contains('menu')) return;
+      // click 이벤트를 발생시킨 <div class="menu"> 요소의 부모 요소인 li 요소
+      const targetLi = event.target.parentNode;
+
+      // 멀티 오픈을 허용하지 않으면 타깃 이외의 모든 서브메뉴를 클로즈한다.
+      if (!this.config.multi) {
+        [].filter.call(
+          this.accordion.childNodes,
+          li => li.nodeType === Node.ELEMENT_NODE && li !== targetLi
+        ).forEach(li => li.classList.remove('show'));
+      }
+
+      // li 요소의 class에 "show"가 있으면 제거하고 없으면 추가한다.
+      targetLi.classList.toggle('show');
+    }
+  }
+
+  window.onload = function () {
+    const accordion = new Accordion({ multi: false });
+    // const accordion = new Accordion();
+  };
+  </script>
+</body>
+</html>
