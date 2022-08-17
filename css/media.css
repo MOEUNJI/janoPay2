@@ -70,6 +70,10 @@
             padding: 0;
         }
 
+        .blue-text-btn > a {
+            font-size: 16px;
+        }
+
         .text-area {
             width: 100%;
             padding: 0;

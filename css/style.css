@@ -132,16 +132,16 @@ body {
 .arr-content {
     display: block;
     position: absolute;
-    top: 0;
-    bottom: -15%;
+    bottom: 40%;
     right: 15px;
-    margin: auto;
+    margin: 0 auto;
     width: 8px;
     height: 8px;
     border-right: 2px solid #333;
     border-bottom: 2px solid #333;
     transform: translateY(-2px) rotate(45deg);
     transition: transform 0.2s ease;
+    cursor: pointer;
 }
 
 /* ----------------------------------------- */
@@ -371,6 +371,7 @@ figure > img {
     margin: 0 auto;
 }
 
+.payment-text > h2,
 .payment-text > p {
     color: #fff;
 }
@@ -456,10 +457,13 @@ figure > img {
 .blue-text-btn {
     cursor: pointer;
     position: relative;
+    
 }
 
 .blue-text-btn > a {
     color: #0d6ecf;
+    font-size: 18px;
+    font-weight: 300;
 }
 
 .blue-text-btn > img {

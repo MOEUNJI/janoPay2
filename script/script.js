@@ -15,16 +15,15 @@ console.log(twoSubAccordionUl);
 console.log(arrBtn);
 
 for (let i = 0; i < arrBtn.length; i++){
-  for (let j = 0; j < twoSubAccordionUl.length; j++){
-      arrBtn[i].addEventListener("click", () => {
+  arrBtn[i].addEventListener("click", () => {
+        for (let j = 0; j < twoSubAccordionUl.length; j++){
         if (twoSubAccordionUl[j].style.display == "none") {
-          twoSubAccordionUl[j].style.display = "block"
+          twoSubAccordionUl[j].style.display = "block";
         } else {
           twoSubAccordionUl[j].style.display = "none";
         }
-      });
-    }
-
+      }
+  });
 }
 
 
