@@ -7,129 +7,109 @@
     <title>Document</title>
 </head>
 <style>
+    .accordion,
+    .accordion2,
+    .accordion3 {
+        background-color: #ffffff;
+        cursor: pointer;
+        padding: 16px;
+        width: 100%;
+        outline: none;
+        border: none;
+        text-align: left;
+        font-size: 16px;
+        transition: 0.4s;
+        height: 25px;
+    }
 
-.accordion_area{width:600px;margin:20px auto;border:1px solid #000}
-.accordion_area .content_area{display:none;padding:10px;background:#f4f4ff}
-.accordion_area .content_area.act{display:block}
-
-.accordion_area {
-    position: relative;
-}
-
-.content_area {
-    position: relative;
-}
-
-.arr-content {
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: -15%;
-    right: 15px;
-    margin: auto;
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid #333;
-    border-bottom: 2px solid #333;
-    transform: translateY(-2px) rotate(45deg);
-    transition: transform 0.2s ease;
-}
-
+    .accordion3 {
+        display: inline-block;
+    }
+ 
+    .active, .accordion:hover {
+        background-color: #f5f5f5;
+        font-weight: bold;
+    }
+ 
+    .accordion:after {
+        content: '\002B';
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+ 
+    .active:after {
+        content: "\2212";
+    }
+ 
+    .panel {
+        padding: 0 16px;
+        background-color: #ffffff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        border-bottom: 1px solid #eeeeee;
+    }
 </style>
 <body>
-    <ul class="accordion_area">
-        <li>개인
-            <span class="btn btn_toggle arr-content"></span>
-            <ul class="content_area">
-                <li>쇼핑 및 구매방법
-                    <span class="btn btn_toggle arr-content"></span>
-                    <ul class="content_area">
-                        <li class="accordion-last-list">
-                            <a href="#">온라인 쇼핑</a>
-                        </li>
-                        <li class="accordion-last-list">
-                            <a href="#">오프라인 키오스크</a>
-                        </li>
-                        <li class="accordion-last-list">
-                            <a href="#">QR코드로 결제</a>
-                        </li>
-                        <li class="accordion-last-list">
-                            <a href="#">자노페이 신용카드</a>
-                        </li>
-                        <li class="accordion-last-list">
-                            <a href="#">거래 및 캐시백</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
+    <ul class="all-accordion-ul">
+        <li class="accordion">개인</li>
+        <ul class="panel">
+            <li class="accordion2">쇼핑 및 어쩌구
+                <ul class="panel">
+                    <li class="accordion3">개인어쩌구</li>
+                </ul>
+            </li>
+        </ul>
     </ul>
-
-<div class="accordion_area">
-        <p>개인</p>
-        <span class="btn btn_toggle arr-content"></span>
-        <div class="content_area">
-            Accordion is accordion.
-        </div>
-    </div>
-
-<div class="accordion_area">
-        <p>개인</p>
-        <span class="btn btn_toggle arr-content"></span>
-        <div class="content_area">
-            Accordion is accordion.
-        </div>
-    </div>
-
-<div class="accordion_area">
-        <p>개인</p>
-        <span class="btn btn_toggle arr-content"></span>
-        <div class="content_area">
-            Accordion is accordion.
-        </div>
-    </div>
-
-<div class="accordion_area">
-        <p>개인</p>
-        <span class="btn btn_toggle arr-content"></span>
-        <div class="content_area">
-            Accordion is accordion.
-        </div>
-    </div>
-</div>
-<script>
-
-    bindingAccordionEvent('.accordion_area');
-
-    function bindingAccordionEvent(wrap){
-         let areaArr = document.querySelectorAll(wrap);
-  
-areaArr.forEach(function(area){
-    let hasGroup = area.dataset['group'] !== undefined ? true : false;
-    // 아코디언 영역에 data-group의 값이 있으면 true 아닐 경우 false (삼항 연산자)
-    let btn = area.querySelector('.btn_toggle');
-    btn.addEventListener('click', function(){
-        if(hasGroup === true){ // 그룹이 있을경우
-            let name = area.dataset['group'];
-            // 그룹명 가져오기
-            let groupArr = document.querySelectorAll(wrap + '[data-group="'+ name +'"]');
-            // 그룹명을 가지고 있는 아코디언 영역을 전부 선택
-            let thisContent = area.querySelector('.content_area');
-            // 현재 아코디언 영역의 컨텐츠 영역
+     <ul class="all-accordion-ul">
+        <li class="accordion">개인</li>
+        <ul class="panel">
+            <li class="accordion2">쇼핑 및 어쩌구
+                <ul class="panel">
+                    <li class="accordion">개인어쩌구</li>
+                </ul>
+            </li>
+        </ul>
+    </ul>
     
-    groupArr.forEach(function(group){
-       let content = group.querySelector('.content_area');
-      content.classList.remove('act');
-    });
-    thisContent.classList.add('act');
-  }else{ // 그룹이 없을경우
-    let content = area.querySelector('.content_area');
-// 현재 아코디언 영역의 컨텐츠 영역
-    content.classList.toggle('act');
-  }
-});
-  });
-}
+    <button class="accordion">메뉴 2</button>
+    <div class="panel">
+        <p>내용 2</p>
+    </div>
+    
+    <button class="accordion">메뉴 3</button>
+    <div class="panel">
+        <p>내용 3</p>
+    </div>
+<script>
+  var acc = document.getElementsByClassName("accordion");
+  let acc2 = document.getElementsByClassName("accordion2")
+    var i;
+ 
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panelNext = this.nextElementSibling;
+            if (panelNext.style.maxHeight) {
+                panelNext.style.maxHeight = null;
+            } else {
+                panelNext.style.maxHeight = panelNext.scrollHeight + "px";
+            }
+        });
+    }
+
+    for (i = 0; i < acc2.length; i++) {
+        acc2[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panelNext = this.nextElementSibling;
+            if (panelNext.style.maxHeight) {
+                panelNext.style.maxHeight = null;
+            } else {
+                panelNext.style.maxHeight = panelNext.scrollHeight + "px";
+            }
+        });
+    }
 </script>
 </body>
 </html>

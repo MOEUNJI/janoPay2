@@ -172,8 +172,11 @@ body {
 
 .header-main-menu.on,
 .web-header:hover .header-main-menu,
-.web-header:hover select,
-select.on2 {
+.web-header:hover select {
+    color: #000;
+}
+
+.select.on2 {
     color: #000;
 }
 

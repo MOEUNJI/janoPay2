@@ -62,11 +62,11 @@ function scroll() {
   if (top >= 68){
     scrollHeader.classList.add("active");
     document.querySelector(".white-logo").src = "./images/header-logo.png";
-    select.style.color = "#000"
+    select.classList.add("on2");
   } else {
     scrollHeader.classList.remove("active");
     document.querySelector(".white-logo").src = "./images/white-logo.png";
-    select.style.color = "#ffffff80";
+    select.classList.remove("on2");
   }
   
   for (let i = 0; i < headerMenu.length; i++){
