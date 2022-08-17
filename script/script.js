@@ -7,18 +7,27 @@ const hamBtn = document.querySelector(".ham-img");
 const mHeader = document.querySelector(".all-header");
 const close = document.querySelector(".close");
 const allContainer = document.querySelector(".all-container");
-const accordionOne = document.getElementsByClassName("accordion-main-menu");
-const accordionTwo = document.getElementsByClassName("accordion-sub-menu");
+const twoSubAccordionUl = document.getElementsByClassName("accordion-sub-menu");
+// 쇼핑 및 구매방법 / 보내기 및 받기 등 ul
+const arrBtn = document.getElementsByClassName("arr-content");
 
-for (let i = 0; i < accordionOne.length; i++){
-  accordionOne[i].addEventListener("click", () => {
-    if (accordionTwo[j].style.display == "none") {
-      accordionTwo[j].style.display = "block"
-    } else {
-       accordionTwo[j].style.display = "none";
+console.log(twoSubAccordionUl);
+console.log(arrBtn);
+
+for (let i = 0; i < arrBtn.length; i++){
+  for (let j = 0; j < twoSubAccordionUl.length; j++){
+      arrBtn[i].addEventListener("click", () => {
+        if (twoSubAccordionUl[j].style.display == "none") {
+          twoSubAccordionUl[j].style.display = "block"
+        } else {
+          twoSubAccordionUl[j].style.display = "none";
+        }
+      });
     }
-  })
+
 }
+
+
 
 
 
@@ -54,7 +63,7 @@ function scroll() {
     scrollHeader.classList.remove("active");
     document.querySelector(".white-logo").src = "./images/white-logo.png";
   }
-
+  
   for (let i = 0; i < headerMenu.length; i++) {
     if (top >= 68) {
       headerMenu[i].classList.add("on");
